@@ -1,4 +1,4 @@
-table 50100 "CSD Seminart Setup"
+table 50100 "CSD Seminar Setup"
 {
     Caption = 'Seminar Setup';
 
@@ -40,7 +40,7 @@ table 50100 "CSD Seminart Setup"
 
     var
 
-        SeminarSetup: Record "CSD Seminart Setup";
+        SeminarSetup: Record "CSD Seminar Setup";
         //CommentLine : record "CSD Seminar Comment Line";
 
         Seminar: Record "CSD Seminar";
