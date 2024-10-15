@@ -15,10 +15,10 @@ tableextension 50100 "CSD ResourceExt" extends Resource
             end;
         }
 
-        modify(Type)
-        {
-            OptionCaption = 'Instructor,Room';
-        }
+        // modify(Type)
+        // {
+        //     OptionCaption = 'Instructor,Room';
+        // }
 
         field(50101; "CSD Resource Type"; Option)
         {
@@ -27,7 +27,7 @@ tableextension 50100 "CSD ResourceExt" extends Resource
             OptionCaption = 'Internal,External';
         }
 
-        field(50102; "CSD Maximum Participants Type"; Integer)
+        field(50102; "CSD Maximum Participants"; Integer)
         {
             Caption = 'Maximum Participants';
         }

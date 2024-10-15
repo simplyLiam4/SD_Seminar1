@@ -6,7 +6,7 @@
             "request": "launch",
             "type": "al",
             "environmentType": "OnPrem",
-            "server": "http://localhost",
+            "server": "http://localhost:8080/BC210",
             "serverInstance": "BC210",
             "authentication": "Windows",
             "port": 7049,
