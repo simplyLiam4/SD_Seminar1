@@ -8,6 +8,7 @@ page 50108 "CSD SeminarRoleCenter"
         {
             part(headline; "Headline RC Administrator")
             {
+
                 ApplicationArea = basic, suite;//Defines the application areas in which this part is available. basic and suite are predefined areas in BC.
             }
         }
@@ -21,7 +22,7 @@ page 50108 "CSD SeminarRoleCenter"
             {
                 RunObject = Page "CSD Seminar Setup";
                 Caption = 'Seminar Setup';
-                Image = Setup;//Specifies the icon for this action, in this case, a setup-related icon.
+                Image = Setup;//Specifies the icon for this action, in this case a setup-related icon.
                 ToolTip = 'Enables you to view and Edit The numbering of Seminars ';//text that appears when a user hovers over the action.
             }
         }
@@ -46,6 +47,9 @@ page 50108 "CSD SeminarRoleCenter"
                     ToolTip = 'Enables you select an instructor';
                     RunPageLink = Type = const(Person);
                 }
+
+
+
             }
         }
         area(Embedding)//A new area for embedding additional actions or sections.

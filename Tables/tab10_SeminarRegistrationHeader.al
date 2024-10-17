@@ -83,7 +83,7 @@ table 50110 "CSD Seminar Reg. Header"
         {
             Caption = 'Instructor Name';
             CalcFormula = Lookup(Resource.Name where("No." = Field("Instructor Resource No."),
-            Type = const(Person)));
+                                                      Type = const(Person)));
             Editable = false;
             FieldClass = FlowField;
         }
@@ -378,19 +378,20 @@ table 50110 "CSD Seminar Reg. Header"
 
     procedure AssistEdit(OldSeminarRegHeader: Record "CSD Seminar Reg. Header"): Boolean;
     begin
-        with SeminarRegHeader do begin
-            SeminarRegHeader := Rec;
-            SeminarSetup.GET;
-            SeminarSetup.TestField("Seminar Registration Nos");
-            if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registration Nos", OldSeminarRegHeader."No. Series", "No. Series") then begin
-                SeminarSetup.GET;
-                SeminarSetup.TestField("Seminar Registration Nos");
-                NoSeriesMgt.SetSeries("No.");
-                Rec := SeminarRegHeader;
-                exit(true);
-            end;
-        end;
+
+        SeminarRegHeader := Rec;
+        SeminarSetup.GET;
+        SeminarSetup.TestField("Seminar Registration Nos");
+        if not NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registration Nos", OldSeminarRegHeader."No. Series", "No. Series") then
+            exit(false);
+        SeminarSetup.GET;
+        SeminarSetup.TestField("Seminar Registration Nos");
+        NoSeriesMgt.SetSeries("No.");
+        Rec := SeminarRegHeader;
+        exit(true);
     end;
+
+
 }
 
 // Chapter 9 - Lab 1-1
