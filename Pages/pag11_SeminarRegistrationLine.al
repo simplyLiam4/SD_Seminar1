@@ -5,12 +5,13 @@ page 50111 "CSD Seminar Registration Line"
     UsageCategory = Administration;
     SourceTable = "CSD Seminar Registration Line";
     AutoSplitKey = true;//Automatically increments the primary key when a new record is inserted. It helps in managing unique keys for new records 
+    Caption = 'Lines';
 
     layout
     {
         area(Content)
         {
-            group(Group)
+            group(Repeater)
             {
                 field("Bill-to Customer No."; rec."Bill-to Customer No.")
                 {

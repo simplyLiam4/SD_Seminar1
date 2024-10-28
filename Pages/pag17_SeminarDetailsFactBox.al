@@ -28,6 +28,7 @@ page 50117 "CSD Seminar Deatils FactBox"
             {
             }
         }
+
     }
 
 }

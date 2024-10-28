@@ -35,5 +35,14 @@ page 50107 "CSD Seminar Comment List"
         }
 
     }
+    trigger OnNewRecord(BelowxRec: Boolean)
+
+    begin
+        setupNewLine;
+
+    end;
+
+    var
+        setupNewLine: Boolean;
 
 }

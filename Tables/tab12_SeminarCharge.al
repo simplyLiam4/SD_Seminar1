@@ -10,12 +10,13 @@ table 50112 "CSD Seminar Charge"
         field(1; "Document No."; Code[20])
         {
             Caption = 'Document No.';
-            NotBlank = true;
-            TableRelation = "CSD Seminar Reg. Header";
+            NotBlank = true;//This field must always have a value.
+            TableRelation = "CSD Seminar Reg. Header";//Links to the "CSD Seminar Reg. Header" table, indicating this charge is tied to a seminar registration.
         }
         field(2; "Line No."; Integer)
         {
-            Caption = 'Line No.';
+            Caption = 'Line No.';//Represents the line number within the document, used to differentiate charges within the same document.
+
         }
         field(3; Type; Option)
         {
@@ -23,7 +24,8 @@ table 50112 "CSD Seminar Charge"
             OptionCaption = 'Resource,G/L Account';
             OptionMembers = Resource,"G/L Account";
 
-            trigger OnValidate();
+            trigger OnValidate();// When the type changes, it resets the line and reinitializes the values based on the new type.
+
             var
                 OldType: Integer;
             begin
@@ -54,6 +56,10 @@ table 50112 "CSD Seminar Charge"
                             "Unit of Measure Code" := Resource."Base Unit of Measure";
                             "Unit Price" := Resource."Unit Price";
                         end;
+                    // Retrieves the resource details and checks if it's blocked.
+                    // Populates fields like Description, Gen. Prod. Posting Group, VAT Prod. Posting Group, Unit of Measure Code, and Unit Price.
+
+
                     Type::"G/L Account":
                         begin
                             GLAccount.Get("No.");
@@ -64,9 +70,11 @@ table 50112 "CSD Seminar Charge"
                             "VAT Prod. Posting Group" := GLAccount."VAT Bus. Posting Group";
                         end;
                 end;
+                // Retrieves G/L account details and checks if it's valid for direct posting.
+                // Populates fields like Description, Gen. Prod. Posting Group, and VAT Prod. Posting Group.
             end;
         }
-        field(5; Description; Text[50])
+        field(5; Description; Text[50])//Provides a description of the charge, such as the name of the resource or G/L account.
         {
             Caption = 'Description';
         }
@@ -90,6 +98,7 @@ table 50112 "CSD Seminar Charge"
             begin
                 "Total Price" := Round("Unit Price" * Quantity, 0.01);
             end;
+            //OnValidate trigger: Recalculates the total price as Unit Price * Quantity.
         }
         field(8; "Total Price"; Decimal)
         {
@@ -97,7 +106,7 @@ table 50112 "CSD Seminar Charge"
             AutoFormatType = 1;
             Editable = false;
 
-            trigger OnValidate();
+            trigger OnValidate();//Recalculates the unit price based on the total price if the quantity is non-zero.
             begin
                 if (Quantity <> 0) then
                     "Unit Price" := Round("Total Price" / Quantity, 0.01)
@@ -113,7 +122,7 @@ table 50112 "CSD Seminar Charge"
         field(10; "Bill-to Customer No."; Code[20])
         {
             Caption = 'Bill-to Customer No.';
-            TableRelation = Customer."No.";
+            TableRelation = Customer."No."; //Links to the Customer table to ensure a valid customer number is selected.
         }
         field(11; "Unit of Measure Code"; Code[10])
         {
@@ -122,7 +131,7 @@ table 50112 "CSD Seminar Charge"
             else
             "Unit of Measure".Code;
 
-            trigger OnValidate();
+            trigger OnValidate();//Ensures the unit of measure is properly validated and calculates the total price based on the quantity per unit of measure.
             begin
                 case Type of
                     Type::Resource:
@@ -159,7 +168,8 @@ table 50112 "CSD Seminar Charge"
         {
             Caption = 'Qty. per Unit of Measure';
         }
-        field(15; Registered; Boolean)
+        field(15; Registered; Boolean)//Indicates whether this charge is registered, meaning it is finalized. It cannot be edited directly by the user.
+
         {
             Caption = 'Registered';
             Editable = false;

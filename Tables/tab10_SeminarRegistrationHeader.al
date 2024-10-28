@@ -79,7 +79,7 @@ table 50110 "CSD Seminar Reg. Header"
                 CalcFields("Instructor Name");
             end;
         }
-        field(6; "Instructor Name"; Text[50])
+        field(6; "Instructor Name"; Text[100])
         {
             Caption = 'Instructor Name';
             CalcFormula = Lookup(Resource.Name where("No." = Field("Instructor Resource No."),

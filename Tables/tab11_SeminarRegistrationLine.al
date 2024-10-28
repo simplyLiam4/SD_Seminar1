@@ -33,13 +33,14 @@ table 50111 "CSD Seminar Registration Line"
                     end;
                 end;
             end;
+            //The OnValidate trigger ensures that if the customer changes, the registration status (Registered) is checked. If already registered, an error prevents the change.
         }
         field(4; "Participant Contact No."; Code[20])
         {
             Caption = 'Participant Contact No.';
             TableRelation = Contact;
 
-            trigger OnLookup();
+            trigger OnLookup(); // Opens a lookup dialog for selecting a contact related to the customer in "Bill-to Customer No.".
             begin
                 ContactBusinessRelation.Reset;
                 ContactBusinessRelation.SetRange("Link to Table", ContactBusinessRelation."Link to Table"::Customer);
@@ -52,8 +53,10 @@ table 50111 "CSD Seminar Registration Line"
 
                 CalcFields("Participant Name");
             end;
+            //OnLookup trigger: Opens a lookup dialog to select a contact from the contacts related to the customer in "Bill-to Customer No.".
 
             trigger OnValidate();
+            // makes sure that the contact selected by the user is related to the customer that is specified in the Bill-to Customer No. field
             begin
                 if ("Bill-to Customer No." <> '') and
                    ("Participant Contact No." <> '')
@@ -71,7 +74,8 @@ table 50111 "CSD Seminar Registration Line"
                 end;
             end;
         }
-        field(5; "Participant Name"; Text[50])
+        field(5; "Participant Name"; Text[100])
+        //Displays the participant's name using a FlowField to pull the contact's name from the Contact table based on "Participant Contact No.".
         {
             Caption = 'Participant Name';
             CalcFormula = Lookup(Contact.Name where("No." = Field("Participant Contact No.")));
@@ -79,6 +83,8 @@ table 50111 "CSD Seminar Registration Line"
             FieldClass = FlowField;
         }
         field(6; "Registration Date"; Date)
+        //The date of registration, which is not editable, typically set when the record is inserted.
+
         {
             Caption = 'Registration Date';
             Editable = false;
@@ -89,10 +95,12 @@ table 50111 "CSD Seminar Registration Line"
             InitValue = true;
         }
         field(8; Participated; Boolean)
+        //Indicates if the participant attended the seminar.
         {
             Caption = 'Participated';
         }
         field(9; "Confirmation Date"; Date)
+        //Date when registration was confirmed. It is not editable by the user.
         {
             Caption = 'Confirmation Date';
             Editable = false;
@@ -106,6 +114,7 @@ table 50111 "CSD Seminar Registration Line"
             begin
                 VALIDATE("Line Discount %");
             end;
+            //OnValidate trigger: Automatically validates and recalculates the line discount percentage when the seminar price is changed.
         }
         field(11; "Line Discount %"; Decimal)
         {
@@ -124,6 +133,7 @@ table 50111 "CSD Seminar Registration Line"
                 end;
                 UpdateAmount;
             end;
+            //OnValidate trigger: If the seminar price is 0, it sets the discount amount to 0. Otherwise, it recalculates the discount amount based on the price.
         }
         field(12; "Line Discount Amount"; Decimal)
         {
@@ -140,6 +150,7 @@ table 50111 "CSD Seminar Registration Line"
                 end;
                 UpdateAmount;
             end;
+            //OnValidate trigger: If the seminar price is 0, the discount percentage is set to 0. Otherwise, it calculates the discount percentage based on the discount amount.
         }
         field(13; Amount; Decimal)
         {
@@ -159,12 +170,14 @@ table 50111 "CSD Seminar Registration Line"
                     "Line Discount %" := Round("Line Discount Amount" / "Seminar Price" * 100, GLSetup."Amount Rounding Precision");
                 end;
             end;
+            //OnValidate trigger: Ensures that the customer and seminar price are valid, rounds the amount, and calculates the line discount and discount percentage.
         }
         field(14; Registered; Boolean)
         {
             Caption = 'Registered';
             Editable = false;
         }
+        //Indicates if the participant is registered. This field is not editable by the user.
     }
 
     keys
@@ -174,18 +187,19 @@ table 50111 "CSD Seminar Registration Line"
         }
     }
 
-    trigger OnDelete();
+    trigger OnDelete(); // makes sure that only the lines that are not registered can be deleted
     begin
         TestField(Registered, false);
     end;
 
-    trigger OnInsert();
+    trigger OnInsert();//Automatically sets the Registration Date, Seminar Price, and Amount when a new line is inserted. The values are pulled from the related seminar header.
     begin
         GetSeminarRegHeader;
         "Registration Date" := WorkDate;
         "Seminar Price" := SeminarRegHeader."Seminar Price";
         Amount := SeminarRegHeader."Seminar Price";
     end;
+
 
     var
         SeminarRegHeader: Record "CSD Seminar Reg. Header";
@@ -198,6 +212,7 @@ table 50111 "CSD Seminar Registration Line"
         WrongContactErrorTxt: Label 'Contact %1 %2 is related to a different company than customer %3.';
 
     local procedure GetSeminarRegHeader();
+    // GetSeminarRegHeader procedure is to standardize the retrieval of the header variable, and to ensure that the header is only retrieved if necessary.
     begin
         if SeminarRegHeader."No." <> "Document No." then
             SeminarRegHeader.Get("Document No.");
@@ -209,6 +224,7 @@ table 50111 "CSD Seminar Registration Line"
     end;
 
     local procedure UpdateAmount();
+    //UpdateAmount procedure is to standardize the calculation of the amounts.
     begin
         GLSetup.Get;
         Amount := Round("Seminar Price" - "Line Discount Amount", GLSetup."Amount Rounding Precision");
