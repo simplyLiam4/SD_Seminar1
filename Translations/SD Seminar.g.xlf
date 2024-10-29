@@ -523,6 +523,11 @@
           <note from="Developer" annotates="general" priority="2">%</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CSD Seminar Registration - Control Document Date - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1606366568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CSD Seminar Registration Line - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4035078560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seminar Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
