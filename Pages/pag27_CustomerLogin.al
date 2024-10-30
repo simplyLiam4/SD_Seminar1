@@ -40,7 +40,7 @@ page 50127 "CSD Customer Login"
                 trigger OnAction()
                 begin
                     // Validate login credentials
-                    if Username = '' or Password = '' then
+                    if (Username = '') or (Password = '') then
                         Error('Username and Password are required.');
                     if not ValidateLogin(Username, Password) then
                         Error('Invalid username or password.');
