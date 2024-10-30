@@ -3,6 +3,31 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="SD Seminar">
     <body>
       <group id="body">
+        <trans-unit id="Table 1100999009 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CSD Customer Receipts - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1100999009 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CSD Customer Receipts - Field Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1100999009 - Field 3444679095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CSD Customer Receipts - Field First Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1100999009 - Field 4068742839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CSD Customer Receipts - Field Last Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1100999009 - Field 2253333645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receipt No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CSD Customer Receipts - Field Receipt No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1023874429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seminar</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -492,6 +517,16 @@
           <source>Seminar Registration Nos</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CSD Seminar Setup - Field Seminar Registration Nos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1100999009 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Receipts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CSD Customer Receipts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1100999009 - Action 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CSD Customer Receipts - Action Delete - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1944624769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seminar</source>
