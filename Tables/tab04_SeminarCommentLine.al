@@ -15,13 +15,13 @@ table 50104 "CSD Seminar Comment Line"
 
         }
 
-        field(20; "Document Line No."; Integer)
+        field(11; "Document Line No."; Integer)
         {
             Caption = 'Document Line No.';
 
         }
 
-        field(30; "No."; Code[20])
+        field(12; "No."; Code[20])
         {
             Caption = 'No.';
             TableRelation = if ("Table Name" = CONST(Seminar))
@@ -29,25 +29,25 @@ table 50104 "CSD Seminar Comment Line"
 
         }
 
-        field(40; "Line No."; Integer)
+        field(13; "Line No."; Integer)
         {
             Caption = 'Line No.';
 
         }
 
-        field(50; "Date"; Date)
+        field(14; "Date"; Date)
         {
             Caption = 'Date';
 
         }
 
-        field(60; "Code"; Code[10])
+        field(15; "Code"; Code[10])
         {
             Caption = 'Code';
 
         }
 
-        field(70; "Comment"; Text[80])
+        field(16; "Comment"; Text[80])
         {
             Caption = 'Comment';
 

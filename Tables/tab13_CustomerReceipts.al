@@ -7,8 +7,17 @@ table 50113 "CSD Customer Receipts"
         field(1; "Receipt No."; Code[20])
         {
             Caption = 'Receipt No.';
-            NotBlank = true;
             Editable = false;
+            trigger OnValidate();
+            begin
+
+                if "Receipt No." <> xRec."Receipt No." then begin
+                    SeminarSetup.GET;
+                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos.");
+                    "No. Series" := '';
+
+                end;
+            end;
         }
         field(2; "First Name"; Text[100])
         {
@@ -40,6 +49,11 @@ table 50113 "CSD Customer Receipts"
         {
             Caption = 'Seminar End';
         }
+        field(8; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            Editable = false;
+        }
     }
 
     keys
@@ -62,14 +76,15 @@ table 50113 "CSD Customer Receipts"
 
 
 
-    //     trigger OnInsert()
-    // begin
-    //     if "Receipt No." = '' then begin
-    //         "Receipt No." := No. Series.GetNextNo('RECEIPT', WorkDate, false);
-    //         if "Receipt No." = '' then
-    //             Error('Unable to generate receipt number. Please check the number series setup.');
-    //     end;
-    // end;
+    trigger OnInsert()
+    begin
+        if "Receipt No." = '' then begin
+            SeminarSetup.get;
+            SeminarSetup.TestField("Seminar Nos.");
+            NoSeriesMgt.InitSeries(SeminarSetup."Seminar Nos.", xRec."No. Series", 0D, "Receipt No.", "No. Series");
+        end;
+
+    end;
 
     // var
     //         NoSeries: Codeunit "No. Series";
@@ -87,5 +102,26 @@ table 50113 "CSD Customer Receipts"
     trigger OnRename()
     begin
         // Any logic to execute on rename
+    end;
+
+    var
+        CSDCustReceipts: Record "CSD Customer Receipts";
+        SeminarSetup: Record "CSD Seminar Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+
+
+
+    procedure AssistEdit(OldCustomerReceipts: Record "CSD Customer Receipts"): Boolean;
+    begin
+
+        CSDCustReceipts := Rec;
+        SeminarSetup.get;
+        SeminarSetup.TestField("Seminar Nos.");
+        if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Nos."
+           , xRec."No. Series", "No. Series") then begin
+            NoSeriesMgt.SetSeries("Receipt No.");
+            Rec := CSDCustReceipts;
+            exit(true);
+        end;
     end;
 }

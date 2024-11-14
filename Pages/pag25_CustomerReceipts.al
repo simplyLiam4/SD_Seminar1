@@ -67,8 +67,7 @@ page 50125 "CSD Customer Receipts"
         }
     }
 
-    var
-        myInt: Integer;
+
 }
 
 // Comments:

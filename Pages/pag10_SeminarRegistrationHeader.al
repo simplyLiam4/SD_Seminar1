@@ -28,6 +28,22 @@ page 50110 "CSD Seminar Registration"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Document Date field.', Comment = '%';
                 }
+                field("Seminar Name"; Rec."Seminar Name")
+                {
+                    ApplicationArea = All;
+                }
+                field("Starting Date"; Rec."Starting Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Status"; Rec.Status)
+                {
+                    ApplicationArea = All;
+                }
+                field("Seminar No."; Rec."Seminar No.")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

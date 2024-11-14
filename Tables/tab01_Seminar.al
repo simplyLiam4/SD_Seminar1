@@ -96,6 +96,7 @@ table 50101 "CSD Seminar"
         field(110; "Gen. Prod. Posting Group "; Code[10])
         {
             Caption = 'Gen. Prod. Posting Group';
+            TableRelation = "Gen. Product Posting Group";
 
             trigger OnValidate();
             begin
@@ -118,6 +119,7 @@ table 50101 "CSD Seminar"
         field(120; "VAT Prod. Posting Group"; Code[10])
         {
             Caption = 'VAT Prod. Posting Group';
+            TableRelation = "VAT Product Posting Group";
         }
 
         field(130; "No. Series"; Code[10])
@@ -134,6 +136,12 @@ table 50101 "CSD Seminar"
         key(Key1; "No.")
         {
             Clustered = true;
+        }
+    }
+    fieldgroups
+    {
+        fieldgroup(DropDown; "No.", Name)
+        {
         }
     }
 
