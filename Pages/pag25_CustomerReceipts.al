@@ -64,6 +64,7 @@ page 50125 "CSD Customer Receipts"
                         Rec.Delete(true);
                 end;
             }
+
         }
     }
 

@@ -103,6 +103,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CSD Registered Customers - Field DateofRegistration - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2692438205 - Field 1285973296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CSD Registered Customers - Field Email - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2692438205 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -808,6 +813,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CSD Customer Registration - Control DateofRegistration - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1687994147 - Control 1285973296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CSD Customer Registration - Control Email - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1687994147 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -837,6 +847,16 @@
           <source>Select Seminar</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CSD Customer Registration - Control Seminar Selection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1687994147 - Action 743942932 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>send an email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CSD Customer Registration - Action SendEmail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1687994147 - Action 743942932 - Method 1377591017 - NamedType 1230436276" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 have sent an email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CSD Customer Registration - Action SendEmail - Method OnAction - NamedType body</note>
         </trans-unit>
         <trans-unit id="Page 1687994147 - Action 1829548432 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Submit</source>

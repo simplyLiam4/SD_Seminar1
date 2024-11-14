@@ -77,6 +77,11 @@ table 50114 "CSD Registered Customers"
             OptionCaption = 'Planning,Registration,Closed,Canceled';
             OptionMembers = Planning,Registration,Closed,Canceled;
         }
+        field(9; "Email"; Text[100])
+        {
+            Caption = 'Email';
+        }
+
 
     }
 

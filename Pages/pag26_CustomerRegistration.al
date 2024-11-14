@@ -18,6 +18,12 @@ page 50126 "CSD Customer Registration"
                     ApplicationArea = All;
                     Editable = true;
                 }
+                field("Email"; Rec."Email")
+                {
+                    Caption = 'Email';
+                    ApplicationArea = All;
+                    Editable = true;
+                }
                 field("DateofRegistration"; Rec."DateofRegistration")
                 {
                     Caption = 'Date of Registration';
@@ -81,6 +87,25 @@ page 50126 "CSD Customer Registration"
                 PromotedIsBig = true;
 
 
+            }
+            action(SendEmail)
+            {
+                Caption = 'send an email';
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    Email: Codeunit Email;
+                    EmailMessage: Codeunit "Email Message";
+                    body: label '%1 have sent an email';
+
+                begin
+                    EmailMessage.Create(rec.Email, rec.Name + ' Email Sent', '', true);
+                    EmailMessage.AppendToBody(StrSubstNo(body, UserId));
+                    Email.Send(EmailMessage);
+
+
+                end;
             }
         }
     }
